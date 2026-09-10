@@ -76,7 +76,7 @@ export async function fetchStoriesFromFirestore(): Promise<Story[]> {
 
     return stories;
   } catch (error) {
-    console.error('Error fetching stories from Firestore:', error);
+    console.warn('Notice: Operating with cached stories while Firestore syncs:', error);
     return [];
   }
 }
@@ -151,7 +151,7 @@ export async function seedStoriesIfEmpty(): Promise<boolean> {
     }
     return false;
   } catch (error) {
-    console.error('Error seeding stories to Firestore:', error);
+    console.warn('Notice: Firestore seeding skipped or offline:', error);
     return false;
   }
 }

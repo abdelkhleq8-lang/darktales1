@@ -5,6 +5,9 @@ service cloud.firestore {
     match /_connection_test/{docId} {
       allow read: if true;
     }
+    match /test/{docId} {
+      allow read: if true;
+    }
 
     // Stories collection - public read for all visitors
     match /stories/{storyId} {

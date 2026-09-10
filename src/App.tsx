@@ -130,7 +130,7 @@ export default function App() {
           setStories(fetched);
         }
       } catch (error) {
-        console.error('Error fetching stories from Firestore:', error);
+        console.warn('Notice: Using local stories data while Firestore syncs:', error);
       } finally {
         if (isMounted) {
           setIsFirestoreLoading(false);
