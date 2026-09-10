@@ -1,11 +1,101 @@
-<div align="center">
+# DarkTales 🩸 | كوابيس تفاعلية
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+تطبيق رعب تفاعلي خفيف وسريع مبني بنظام Dark Glassmorphism، يجمع بين متعة القراءة وتجربة الصوت المحيطي المظلم (8D Audio Atmosphere)، مع نظام تفاعل اجتماعي (إعجابات، حفظ القصص، وتعليقات القراء).
 
-  <h1>Built with AI Studio</h2>
+---
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 🛠 التقنيات المستخدمة
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+- **Next.js / React 18+**: معمارية حديثة ومكونات تفاعلية وسريعة.
+- **Tailwind CSS**: ستايل Dark Glassmorphism، زجاج داكن، هوامش وظلال سينمائية.
+- **Web Audio API**: مولد مؤثرات صوتية محيطية وتفاعلية مدمجة دون الحاجة لملفات خارجية ضخمة.
+- **Prisma ORM & PostgreSQL**: مخطط بيانات مبسط ومحكم (`User`, `Story`, `Comment`, `Like`).
+- **Lucide React**: أيقونات عصرية وخفيفة.
 
-</div>
+---
+
+## 🚀 متطلبات التشغيل والبدء السريع
+
+### 1. تثبيت الحزم (Dependencies)
+```bash
+npm install
+```
+
+### 2. إعداد المتغيرات البيئية (.env)
+قم بإنشاء ملف `.env` بناءً على النموذج:
+```bash
+cp .env.example .env
+```
+وقم بتعديل المتغيرات اللازمة:
+```env
+DATABASE_URL="postgresql://postgres:password@localhost:5432/darktales?schema=public"
+NEXTAUTH_SECRET="your-super-secret-jwt-key-change-this"
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+### 3. إعداد قاعدة البيانات عبر Prisma
+```bash
+# توليد Prisma Client
+npx prisma generate
+
+# تشغيل ترحيل الجداول (Migrations) على قاعدة بيانات PostgreSQL
+npx prisma migrate dev --name init
+```
+
+### 4. تشغيل خادم التطوير المحلي
+```bash
+npm run dev
+```
+افتح المتصفح وتوجه إلى الرابط: `http://localhost:3000`
+
+---
+
+## 📂 هيكل المجلدات والمشروع (Project Structure)
+
+```text
+├── prisma/
+│   └── schema.prisma          # مخطط قاعدة البيانات (Users, Stories, Comments, Likes)
+├── middleware.ts              # حماية المسارات والتحقق من الجلسات
+├── .env.example               # نموذج المتغيرات البيئية
+├── src/
+│   ├── types.ts               # تعريفات TypeScript ونماذج البيانات
+│   ├── data/
+│   │   ├── stories.ts         # قصص الرعب الافتراضية
+│   │   └── comments.ts        # تعليقات وهمسات القراء
+│   ├── utils/
+│   │   └── audioEngine.ts     # محرك الأصوات المحيطية التفاعلية (Web Audio)
+│   ├── components/
+│   │   ├── CustomSwitch.tsx   # مفتاح التبديل المخصص لتفعيل/تعطيل الصوت
+│   │   ├── StoryCard.tsx      # بطاقة عرض القصة مع أزرار الإعجاب والحفظ والصوت
+│   │   ├── CommentsSection.tsx# نظام التعليقات والردود وتفاعل القراء
+│   │   ├── ProfileView.tsx    # صفحة الملف الشخصي (المعجبات، المحفوظات، ونشر قصة)
+│   │   ├── StoryReaderModal.tsx # شاشة القراءة السينمائية الكاملة مع حجم الخط
+│   │   ├── FeaturedSpotlight.tsx # تسليط الضوء على قصة الغلاف
+│   │   ├── CategoryFilter.tsx # فلترة القصص حسب نوع الرعب
+│   │   ├── Navbar.tsx         # شريط التنقل العلوي مع موازن الصوت المحيطي
+│   │   └── BottomNav.tsx      # شريط التنقل السفلي السريع
+│   ├── App.tsx                # المكون الرئيسي وربط الحالة
+│   ├── index.css              # إعدادات Tailwind والتصميم المظلم
+│   └── main.tsx               # نقطة الانطلاق
+└── README.md
+```
+
+---
+
+## ✨ المميزات الرئيسية لتطبيق DarkTales:
+1. **نظام المصادقة والحسابات (Auth System)**:
+   - زري تسجيل دخول (Login) وتسجيل خروج (Logout) واضحين في الشريط العلوي (Navbar).
+   - نافذة منبثقة (Auth Modal) تدعم تسجيل الدخول عبر Google OAuth أو البريد الإلكتروني وكلمة المرور مع إمكانية إنشاء حساب جديد وتوثيقه وحفظ الجلسة فوراً.
+2. **تعديل الملف الشخصي والإعدادات (Edit Profile & Settings)**:
+   - واجهة كاملة لتعديل الملف الشخصي تمكن المستخدم من: تغيير اسم العرض، اسم المستخدم (Handle)، النبذة التعريفية (Bio).
+   - رفع وتغيير الصورة الشخصية (Profile Picture) عبر رفع ملف من الجهاز باستخدام FileReader أو اختيار صور رعب مسبقة، مع الحفظ التلقائي الفوري.
+3. **تحسين نظام الأصوات وتفاعلات الرعب (Enhanced Audio Engine & Volume Control)**:
+   - رفع مستوى الصوت الأساسي (Gain) بنقاء وقوة ومضاعفة وضوح الترددات المخيفة.
+   - إضافة شريط تحكم دقيق بمستوى الصوت (Volume Slider) من 0% إلى 100% في المشغل.
+   - إضافة مؤثرات صوتية تفاعلية تكتيكية (SFX) لنبضات القلب، صرير الأبواب، همسات الأشباح، وفزعات الرعب (Jumpscare) عند التفاعل كالإعجاب وحفظ القصص.
+4. **ميزة كوابيس ٢٤ ساعة الحية (Stories 24H)**:
+   - شريط أفقي متحرك في أعلى الصفحة الرئيسية (Horizontal Stories Bar) بحلقات دموية متوهجة للمشاهدة والتفاعل.
+   - إمكانية نشر كابوس سريع (نص مع صورة ومؤثر صوتي رعب مركب) يختفي تلقائياً بعد مرور 24 ساعة.
+   - عارض قصص ملء الشاشة (Stories Viewer) مع شريط تقدم زمني، تفاعلات سريعة (😱 🩸 💀 🕯️)، وأصوات تلقائية.
+5. **نظام الإعجابات، الحفظ، والتعليقات الحية**:
+   - إعجاب وحفظ مع عدادات متزامنة، وقسم تعليقات متكامل لكل كابوس مع قراءة سينمائية غامرة.

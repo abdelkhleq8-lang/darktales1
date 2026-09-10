@@ -1,0 +1,6 @@
+{
+  "name": "DarkTales",
+  "description": "تطبيق لقصص وروايات الرعب بتصميم غامر وخفيف",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

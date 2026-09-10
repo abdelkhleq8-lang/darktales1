@@ -1,0 +1,63 @@
+import { Story24H } from '../types';
+
+const NOW = Date.now();
+const ONE_HOUR = 60 * 60 * 1000;
+
+export const INITIAL_STORIES_24H: Story24H[] = [
+  {
+    id: 'story-24-1',
+    authorId: 'auth-1',
+    authorName: 'د. شريف عزمي',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    authorBadge: 'محقق ما وراء الطبيعة',
+    mediaUrl: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=900&auto=format&fit=crop&q=80',
+    caption: 'سمعت خطوات ثقيلة فوق سقف غرفتي قبل عشر دقائق... والبيت دور أخير بدون سقف مستعار!',
+    ambientSound: 'creak',
+    createdAt: NOW - 2 * ONE_HOUR,
+    expiresAt: NOW + 22 * ONE_HOUR,
+    viewsCount: 142,
+    isViewed: false,
+  },
+  {
+    id: 'story-24-2',
+    authorId: 'auth-2',
+    authorName: 'سارة خليل',
+    authorAvatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80',
+    authorBadge: 'كاتبة رعب نفسي',
+    mediaUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900&auto=format&fit=crop&q=80',
+    caption: 'فتحت الكاميرا الأمامية في الظلام ووجدت نقطتين حمراوين تعكسان الضوء خلف كتفي مباشرة... أنا وحيدة بالمنزل!',
+    ambientSound: 'whisper',
+    createdAt: NOW - 4 * ONE_HOUR,
+    expiresAt: NOW + 20 * ONE_HOUR,
+    viewsCount: 238,
+    isViewed: false,
+  },
+  {
+    id: 'story-24-3',
+    authorId: 'auth-3',
+    authorName: 'طارق المنشاوي',
+    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    authorBadge: 'جامع مخطوطات قديمة',
+    mediaUrl: 'https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=900&auto=format&fit=crop&q=80',
+    caption: 'المذياع القديم بدأ يبث أصوات استغاثة من تردد مغلق منذ عام 1974 في تمام الساعة ٣:٠٣ فجراً.',
+    ambientSound: 'heartbeat',
+    createdAt: NOW - 6 * ONE_HOUR,
+    expiresAt: NOW + 18 * ONE_HOUR,
+    viewsCount: 310,
+    isViewed: false,
+  },
+  {
+    id: 'story-24-4',
+    authorId: 'auth-4',
+    authorName: 'ليلى عبد المجيد',
+    authorAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80',
+    authorBadge: 'مستكشفة أماكن مهجورة',
+    mediaUrl: 'https://images.unsplash.com/photo-1518709779341-56cf4535e94b?w=900&auto=format&fit=crop&q=80',
+    caption: 'هذه الصورة التقطتها للمرآة العتيقة قبل قليل... دققوا في الزاوية اليسرى السفلى، انعكاس بلا جسد!',
+    ambientSound: 'jumpscare',
+    createdAt: NOW - 8 * ONE_HOUR,
+    expiresAt: NOW + 16 * ONE_HOUR,
+    viewsCount: 415,
+    isViewed: false,
+  },
+];

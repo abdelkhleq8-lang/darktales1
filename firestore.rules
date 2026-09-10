@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Connection test
+    match /_connection_test/{docId} {
+      allow read: if true;
+    }
+
+    // Stories collection - public read for all visitors
+    match /stories/{storyId} {
+      allow read: if true;
+      allow create: if request.resource.data.title is string
+                    && request.resource.data.title.size() > 0
+                    && request.resource.data.title.size() <= 200
+                    && request.resource.data.content is string
+                    && request.resource.data.content.size() > 0
+                    && request.resource.data.content.size() <= 20000;
+      allow update: if request.resource.data.title is string
+                    && request.resource.data.content is string;
+      allow delete: if false;
+    }
+  }
+}

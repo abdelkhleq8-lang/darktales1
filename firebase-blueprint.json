@@ -1,0 +1,38 @@
+{
+  "entities": {
+    "Story": {
+      "title": "Story",
+      "description": "A horror story record with optional ambient audio",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the horror story"
+        },
+        "content": {
+          "type": "string",
+          "description": "Full narrative content of the story"
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Author display name or pseudonym"
+        },
+        "audioUrl": {
+          "type": "string",
+          "description": "URL to the ambient horror sound effect"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp in ISO format or server timestamp"
+        }
+      },
+      "required": ["title", "content"]
+    }
+  },
+  "firestore": {
+    "/stories/{storyId}": {
+      "schema": "Story",
+      "description": "Collection of horror stories published by users"
+    }
+  }
+}
